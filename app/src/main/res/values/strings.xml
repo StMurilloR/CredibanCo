@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CredibanCO</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="authorization_transaction">Autorizar Transacción</string>
+    <string name="form">Formulario</string>
+    <string name="commerce_cod">Código comercio:</string>
+    <string name="terminal_cod">Código terminal:</string>
+    <string name="amount_cod">Monto:</string>
+    <string name="card_number">Número de tarjeta:</string>
+    <string name="approved">Autorizar</string>
+    <string name="find_transactions">Búsqueda de transacciones aprobadas</string>
+    <string name="receipt_number">Número de registro:</string>
+    <string name="not_transaction">SIN TRASACCIÓNES REGISTARADAS</string>
+    <string name="detail">Detalle Transacción</string>
+    <string name="annulation">Anular Transacción</string>
+    <string name="approved_transaction">APROBADA</string>
+    <string name="welcome">¡Bienvenido a CredibanCO!</string>
+    <string name="authorization">Autorizar transacción</string>
+    <string name="find_all_transactions">Búsqueda de transacciones aprobadas</string>
+    <string name="list_transactions">Lista transacciones aprobadas</string>
+    <string name="list_transactions_approved">Lista de transacciones</string>
+</resources>

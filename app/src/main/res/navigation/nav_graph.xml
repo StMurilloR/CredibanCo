@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.credibanco.presentation.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listTransactionFragment"
+            app:destination="@id/listTransactionFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_browseTransactionFragment"
+            app:destination="@id/browseTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.example.credibanco.presentation.fragments.AuthorizationFragment"
+        android:label="fragment_authorization"
+        tools:layout="@layout/fragment_authorization" >
+        <action
+            android:id="@+id/action_authorizationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listTransactionFragment"
+        android:name="com.example.credibanco.presentation.fragments.ListTransactionFragment"
+        android:label="fragment_list_transaction"
+        tools:layout="@layout/fragment_list_transaction" >
+        <action
+            android:id="@+id/action_listTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/browseTransactionFragment"
+        android:name="com.example.credibanco.presentation.fragments.BrowseTransactionFragment"
+        android:label="fragment_browse_transaction"
+        tools:layout="@layout/fragment_browse_transaction" >
+        <action
+            android:id="@+id/action_browseTransactionFragment_to_detailTransactionFragment"
+            app:destination="@id/detailTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTransactionFragment"
+        android:name="com.example.credibanco.presentation.fragments.DetailTransactionFragment"
+        android:label="fragment_detail_transaction"
+        tools:layout="@layout/fragment_detail_transaction" >
+        <action
+            android:id="@+id/action_detailTransactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_detailTransactionFragment_to_listTransactionFragment"
+            app:destination="@id/listTransactionFragment" />
+    </fragment>
+</navigation>
