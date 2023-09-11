@@ -72,6 +72,9 @@ class AuthorizationFragment : Fragment() {
         }
     }
 
+    /**
+     * Funcion que inicializa el observador
+     */
     private fun initObservers(){
         transactionViewModel.authorization.observe(viewLifecycleOwner) { data ->
             data?.run {

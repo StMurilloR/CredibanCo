@@ -38,6 +38,10 @@ class HomeFragment : Fragment(){
         _binding = null
     }
 
+
+    /**
+     * Funcion que inicializa el listener de los botones
+     */
     private fun initButtonListeners(){
         with(binding){
             authorizationButton.setOnClickListener {

@@ -39,6 +39,9 @@ class ListTransactionFragment : Fragment() {
         initObservers()
     }
 
+    /**
+     * Funcion que inicializa el observador
+     */
     private fun initObservers(){
         transactionViewModel.getTransactionsList()
         transactionViewModel.transactions.observe(viewLifecycleOwner) {data ->

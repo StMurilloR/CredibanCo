@@ -96,7 +96,9 @@ class TransactionViewModel @Inject constructor(
         }
     }
 
-
+    /**
+     * Función que actualiza la transaccion en curso
+     */
     fun setTransactionRoom(transactionVO: TransactionVO){
         this.transactionVO = transactionVO
     }

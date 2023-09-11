@@ -39,6 +39,9 @@ class AdapterTransactionList<T>(
         onBind(holder.view, dataset[position], position)
     }
 
+    /**
+     * Funcion que actualiza la lista
+     */
     fun updateListTransactions(list: List<T>){
         this.dataset = list
         notifyDataSetChanged()

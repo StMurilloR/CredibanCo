@@ -26,6 +26,9 @@ object AppModule {
 
     private const val DATABASE_NAME = "app_database"
 
+    /**
+     * Provee la instancia del base de datos
+     */
     @Singleton
     @Provides
     fun provideRoom( context: Application) =
@@ -33,6 +36,9 @@ object AppModule {
             Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME).build()
         }
 
+    /**
+     * Provee la instancia del base de datos
+     */
     @Singleton
     @Provides
     fun provideAppDao(db: AppDatabase) = db.transactionDao

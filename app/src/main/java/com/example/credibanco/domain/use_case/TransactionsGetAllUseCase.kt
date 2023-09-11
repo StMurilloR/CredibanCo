@@ -7,6 +7,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+/**
+ * Caso de uso de las trasacciones
+ */
 class TransactionsGetAllUseCase @Inject constructor(
     private val repository: Repository
 ){

@@ -10,6 +10,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
+/**
+ * Caso de uso de las Autorizaciones
+ */
 class AuthorizationUseCase @Inject constructor(
     private val repository: Repository
 ){
