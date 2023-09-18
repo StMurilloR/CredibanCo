@@ -39,6 +39,11 @@ class ListTransactionFragment : Fragment() {
         initObservers()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     /**
      * Funcion que inicializa el observador
      */
@@ -88,7 +93,6 @@ class ListTransactionFragment : Fragment() {
             }else {
                 approved.text = "APROBADA"
             }
-
         }
     }
 

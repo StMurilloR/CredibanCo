@@ -16,6 +16,7 @@ import com.example.credibanco.utils.concatString
 import com.example.credibanco.utils.convertToDecimal
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.migration.OptionalInject
+import java.util.*
 
 @OptionalInject
 @AndroidEntryPoint
@@ -37,6 +38,11 @@ class DetailTransactionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initObservers()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     /**
@@ -62,7 +68,11 @@ class DetailTransactionFragment : Fragment() {
 
                             val annulationVO = AnnulationVO(select.receiptId.toString(), select.rrn.toString())
                             annulationButton.setOnClickListener {
-                                transactionViewModel.getAnnulation("Basic MDAwMTIzMDAwQUJD", annulationVO)
+                                val concatString = "000123000ABC"
+                                val encoder: Base64.Encoder = Base64.getEncoder()
+                                val encoderString: String = encoder.encodeToString(concatString.encodeToByteArray())
+                                val concatKey = concatString("Basic ", encoderString)
+                                transactionViewModel.getAnnulation(concatKey, annulationVO)
                             }
                         }
                     }

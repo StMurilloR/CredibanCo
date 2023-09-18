@@ -51,9 +51,9 @@ class AuthorizationFragment : Fragment() {
             approvedButton.setOnClickListener {
                 if (commerceCodeInput.text.isNotEmpty() && terminalCodeInput.text.isNotEmpty() &&
                         amountInput.text.isNotEmpty() && cardInput.text.isNotEmpty()){
-                    val concatString = concatString(commerceCodeInput.toString(),terminalCodeInput.toString())
+                    val concatString = "000123000ABC"
                     val encoder: Base64.Encoder = Base64.getEncoder()
-                    val encoderString: String = encoder.encodeToString(concatString.toByteArray())
+                    val encoderString: String = encoder.encodeToString(concatString.encodeToByteArray())
                     val concatKey = concatString("Basic ", encoderString)
                     val myUuid = UUID.randomUUID()
                     val myUuidAsString = myUuid.toString()
@@ -61,7 +61,7 @@ class AuthorizationFragment : Fragment() {
                     val newAmount = String.format(amountNumber).replace(".","")
                     val authorizationVO = AuthorizationVO(id = myUuidAsString, commerceCode = commerceCodeInput.text.toString(),
                         terminalCode = terminalCodeInput.text.toString() ,amount = newAmount, card = cardInput.text.toString())
-                    transactionViewModel.getAuthorization("Basic MDAwMTIzMDAwQUJD", authorizationVO)
+                    transactionViewModel.getAuthorization(concatKey, authorizationVO)
                     transactionViewModel.setTransactionRoom( TransactionVO(idTransaction = myUuidAsString, commerceCode = commerceCodeInput.text.toString(),
                         terminalCode = terminalCodeInput.text.toString() ,amount = newAmount, card = cardInput.text.toString(), authorization = true,
                         annulation = false, receiptId = null, rrn = null))
@@ -79,15 +79,20 @@ class AuthorizationFragment : Fragment() {
         transactionViewModel.authorization.observe(viewLifecycleOwner) { data ->
             data?.run {
                 this.data?.let {
-                    transactionViewModel.transactionVO.receiptId = it.receiptId
-                    transactionViewModel.transactionVO.rrn = it.rrn
-                    val transactionRoom = transactionViewModel.transactionVO
-                    transactionViewModel.setTransactionInsert(transactionRoom)
-                    Toast.makeText(context, "Transacción Autorizada", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+                    if (transactionViewModel.transactionVO.authorization){
+                        transactionViewModel.transactionVO.receiptId = it.receiptId
+                        transactionViewModel.transactionVO.rrn = it.rrn
+                        val transactionRoom = transactionViewModel.transactionVO
+                        transactionViewModel.setTransactionInsert(transactionRoom)
+                        Toast.makeText(context, "Transacción Autorizada", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+                        transactionViewModel.transactionVO = TransactionVO(idTransaction = "", commerceCode = "",
+                            terminalCode = "" ,amount = "", card = "", authorization = false,
+                            annulation = false, receiptId = null, rrn = null)
+                    }
                 }
                 error?.let {
-                    Toast.makeText(context, "Transacción No Autorizada", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Transacción No Autorizada - Revise los datos", Toast.LENGTH_SHORT).show()
                 }
             }
         }

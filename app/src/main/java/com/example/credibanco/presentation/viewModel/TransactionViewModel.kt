@@ -30,7 +30,7 @@ class TransactionViewModel @Inject constructor(
     val transactions = _transactions
 
     private val _authorization = MutableLiveData<DataState<AuthorizationApiResponse>>(DataState())
-    val authorization = _authorization
+    var authorization = _authorization
 
     private val _annulation = MutableLiveData<DataState<AnnulationApiResponse>>(DataState())
     val annulation = _annulation

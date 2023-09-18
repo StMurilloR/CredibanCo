@@ -44,6 +44,11 @@ class BrowseTransactionFragment : Fragment() {
         initObservers()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     /**
      * Funcion que inicializa el observador
      */
