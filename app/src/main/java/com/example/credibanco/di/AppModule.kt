@@ -84,7 +84,7 @@ object AppModule {
     }
 
     /**
-     * Provee la instancia del caso de uso del beneficio
+     * Provee la instancia del caso de uso de las transacciones
      */
     @Provides
     fun provideTransactionViewModel(

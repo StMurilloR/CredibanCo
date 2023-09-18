@@ -73,6 +73,7 @@ class DetailTransactionFragment : Fragment() {
                                 val encoderString: String = encoder.encodeToString(concatString.encodeToByteArray())
                                 val concatKey = concatString("Basic ", encoderString)
                                 transactionViewModel.getAnnulation(concatKey, annulationVO)
+                                transactionViewModel.transactionAnnulation = true
                             }
                         }
                     }
@@ -84,19 +85,22 @@ class DetailTransactionFragment : Fragment() {
             data?.run {
                 this.data?.let {
                     transactionViewModel.transactions.observe(viewLifecycleOwner) { data ->
-                        data?.run {
-                            this.data?.let { list ->
-                                val transaction = list.find { transactionSelect ->
-                                    transactionSelect.id == transactionViewModel.transactionIdSelected
-                                }
-                                transaction?.let {
-                                    it.annulation = true
-                                    transactionViewModel.setTransactionUpdate(it)
+                        if (transactionViewModel.transactionAnnulation != null){
+                            data?.run {
+                                this.data?.let { list ->
+                                    val transaction = list.find { transactionSelect ->
+                                        transactionSelect.id == transactionViewModel.transactionIdSelected
+                                    }
+                                    transaction?.let {
+                                        it.annulation = true
+                                        transactionViewModel.setTransactionUpdate(it)
+                                        Toast.makeText(context, "Anulación Correcta", Toast.LENGTH_SHORT).show()
+                                        findNavController().navigate(R.id.action_detailTransactionFragment_to_homeFragment)
+                                        transactionViewModel.transactionAnnulation = null
+                                    }
                                 }
                             }
                         }
-                        Toast.makeText(context, "Anulación Correcta", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_detailTransactionFragment_to_homeFragment)
                     }
                     error?.let {
                         Toast.makeText(context, "Anulación Incorrecta", Toast.LENGTH_SHORT).show()

@@ -9,8 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.credibanco.data.database.entity.TransactionEntity
 import com.example.credibanco.databinding.FragmentListTransactionBinding
-import com.example.credibanco.presentation.Adapter.AdapterTransactionList
 import com.example.credibanco.presentation.viewModel.TransactionViewModel
+import com.example.credibanco.utils.AdapterTransactionList
 import com.example.credibanco.utils.TransactionInflater
 import com.example.credibanco.utils.concatString
 import com.example.credibanco.utils.convertToDecimal

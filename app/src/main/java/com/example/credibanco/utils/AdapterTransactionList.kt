@@ -1,4 +1,4 @@
-package com.example.credibanco.presentation.Adapter
+package com.example.credibanco.utils
 
 import android.view.LayoutInflater
 import android.view.View

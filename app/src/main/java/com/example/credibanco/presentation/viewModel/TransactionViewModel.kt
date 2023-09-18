@@ -37,6 +37,7 @@ class TransactionViewModel @Inject constructor(
 
     lateinit var transactionVO: TransactionVO
     var transactionIdSelected: Int? = null
+    var transactionAnnulation: Boolean? = null
 
 
     /**
